@@ -1,5 +1,5 @@
-CREATE TABLE `Section_Management` (
-  `id` int PRIMARY KEY,
+CREATE TABLE `section` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `createSection` varchar(255),
   `updateSection` varchar(255),
@@ -9,8 +9,8 @@ CREATE TABLE `Section_Management` (
   `updated_at` timestamp
 );
 
-CREATE TABLE `Category_Management` (
-  `id` int PRIMARY KEY,
+CREATE TABLE `category` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `createCategory` varchar(255),
   `updateCategory` varchar(255),
@@ -20,8 +20,8 @@ CREATE TABLE `Category_Management` (
   `updated_at` timestamp
 );
 
-CREATE TABLE `Section_Content_Management` (
-  `id` int PRIMARY KEY,
+CREATE TABLE `section_content` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `createSectionContent` varchar(255),
   `updateSectionContent` varchar(255),
@@ -31,8 +31,8 @@ CREATE TABLE `Section_Content_Management` (
   `updated_at` timestamp
 );
 
-CREATE TABLE `Content_Management` (
-  `id` int PRIMARY KEY,
+CREATE TABLE `content` (
+  `id` int PRIMARY KEY AUTO_INCREMENT, 
   `name` varchar(255),
   `createContent` varchar(255),
   `updateContent` varchar(255),
@@ -42,8 +42,8 @@ CREATE TABLE `Content_Management` (
   `updated_at` timestamp
 );
 
-CREATE TABLE `Contact_Management` (
-  `id` int PRIMARY KEY,
+CREATE TABLE `contact_customer` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `createContact` varchar(255),
   `updateContact` varchar(255),
   `deleteContact` varchar(255),
@@ -53,8 +53,8 @@ CREATE TABLE `Contact_Management` (
   `updated_at` timestamp
 );
 
-CREATE TABLE `Customer_Management` (
-  `id` int PRIMARY KEY,
+CREATE TABLE `customer` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `phoneNumber` varchar(255),
   `address` varchar(255),
@@ -66,8 +66,8 @@ CREATE TABLE `Customer_Management` (
   `updated_at` timestamp
 );
 
-CREATE TABLE `Provider_Management` (
-  `id` int PRIMARY KEY,
+CREATE TABLE `provider` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `phoneNumber` int,
   `address` varchar(255),
@@ -78,8 +78,8 @@ CREATE TABLE `Provider_Management` (
   `updated_at` timestamp
 );
 
-CREATE TABLE `Block_Management` (
-  `id` int PRIMARY KEY,
+CREATE TABLE `block_management` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `createContact` varchar(255),
   `updateContact` varchar(255),
@@ -88,8 +88,8 @@ CREATE TABLE `Block_Management` (
   `updated_at` timestamp
 );
 
-CREATE TABLE `Page_Management` (
-  `id` int PRIMARY KEY,
+CREATE TABLE `page` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `createPage` varchar(255),
   `updatePage` varchar(255),
@@ -101,8 +101,8 @@ CREATE TABLE `Page_Management` (
   `updated_at` timestamp
 );
 
-CREATE TABLE `Slide_Banner_Management` (
-  `id` int PRIMARY KEY,
+CREATE TABLE `slide_banner` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `creatSlideBanner` varchar(255),
   `updateSlideBanner` varchar(255),
@@ -111,18 +111,18 @@ CREATE TABLE `Slide_Banner_Management` (
   `updated_at` timestamp
 );
 
-CREATE TABLE `Website_Management` (
-  `id` int PRIMARY KEY,
+CREATE TABLE `webiste_management` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `updateWebsite` varchar(255),
   `create_at` timestamp,
   `updated_at` timestamp
 );
 
-ALTER TABLE `Customer_Management` ADD FOREIGN KEY (`id`) REFERENCES `Contact_Management` (`customerId`);
+ALTER TABLE `customer` ADD FOREIGN KEY (`id`) REFERENCES `contact_customer` (`customerId`);
 
-ALTER TABLE `Page_Management` ADD FOREIGN KEY (`manageSlideBanner`) REFERENCES `Website_Management` (`id`);
+ALTER TABLE `page` ADD FOREIGN KEY (`manageSlideBanner`) REFERENCES `website_management` (`id`);
 
-ALTER TABLE `Page_Management` ADD FOREIGN KEY (`manageBlock`) REFERENCES `Block_Management` (`id`);
+ALTER TABLE `page` ADD FOREIGN KEY (`manageBlock`) REFERENCES `block_Management` (`id`);
 
-ALTER TABLE `Page_Management` ADD FOREIGN KEY (`manageSlideBanner`) REFERENCES `Slide_Banner_Management` (`id`);
+ALTER TABLE `page` ADD FOREIGN KEY (`manageSlideBanner`) REFERENCES `slide_banner` (`id`);
