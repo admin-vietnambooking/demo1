@@ -5,7 +5,7 @@ CREATE TABLE `Users` (
 	`email` varchar(50) NOT NULL UNIQUE,
 	`phone_number` int(50) UNIQUE,
 	`address` varchar(255),
-	`birthdate` DATE(255),
+	`birth_date` DATE(255),
 	`role_id` int(11) NOT NULL,
 	`registered_date` TIMESTAMP NOT NULL,
 	`last_logined_date` TIMESTAMP NOT NULL,
@@ -71,7 +71,6 @@ CREATE TABLE `Pages` (
 	`site_title` varchar(255) NOT NULL,
 	`meta_key` varchar(255) NOT NULL,
 	`meta_description` varchar(255) NOT NULL,
-	`meta_description` varchar(255) NOT NULL,
 	`created_at` TIMESTAMP NOT NULL,
 	`upadated_at` TIMESTAMP NOT NULL,
 	PRIMARY KEY (`id`)
@@ -95,7 +94,7 @@ CREATE TABLE `Advertisement` (
 );
 
 CREATE TABLE `Advertisement_position` (
-	`adv_position` int NOT NULL AUTO_INCREMENT,
+	`adv_position_id` int NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	PRIMARY KEY (`adv_position`)
 );
@@ -182,7 +181,7 @@ CREATE TABLE `Product_comment` (
 	`email` varchar(255) NOT NULL,
 	`detail` varchar(255) NOT NULL,
 	`status` bit NOT NULL,
-	`product_ID` int NOT NULL,
+	`product_id` int NOT NULL,
 	`created_date` TIMESTAMP NOT NULL,
 	`updated_by` int NOT NULL,
 	PRIMARY KEY (`comment_id`)
@@ -200,7 +199,7 @@ CREATE TABLE `Supplier` (
 CREATE TABLE `Invoice` (
 	`invoice_id` int(11) NOT NULL AUTO_INCREMENT,
 	`status` int NOT NULL,
-	`supplier_ID` int(11) NOT NULL,
+	`supplier_id` int(11) NOT NULL,
 	`created_by` int NOT NULL,
 	`created_date` TIMESTAMP NOT NULL,
 	`updated_date` TIMESTAMP NOT NULL,
@@ -271,7 +270,7 @@ CREATE TABLE `Payment_unit` (
 );
 
 CREATE TABLE `Transaction` (
-	`transaction_ID` int(11) NOT NULL AUTO_INCREMENT,
+	`transaction_id` int(11) NOT NULL AUTO_INCREMENT,
 	`unit_id` int(11) NOT NULL,
 	`amount` int NOT NULL,
 	`date_created` DATETIME NOT NULL,
@@ -454,9 +453,9 @@ ALTER TABLE `Banners` ADD CONSTRAINT `Banners_fk0` FOREIGN KEY (`page_id`) REFER
 
 ALTER TABLE `Product` ADD CONSTRAINT `Product_fk0` FOREIGN KEY (`cate_id`) REFERENCES `Product_category`(`cate_id`);
 
-ALTER TABLE `Product_comment` ADD CONSTRAINT `Product_comment_fk0` FOREIGN KEY (`product_ID`) REFERENCES `Product`(`id`);
+ALTER TABLE `Product_comment` ADD CONSTRAINT `Product_comment_fk0` FOREIGN KEY (`product_id`) REFERENCES `Product`(`id`);
 
-ALTER TABLE `Invoice` ADD CONSTRAINT `Invoice_fk0` FOREIGN KEY (`supplier_ID`) REFERENCES `Supplier`(`id`);
+ALTER TABLE `Invoice` ADD CONSTRAINT `Invoice_fk0` FOREIGN KEY (`supplier_id`) REFERENCES `Supplier`(`id`);
 
 ALTER TABLE `invoice_detail` ADD CONSTRAINT `invoice_detail_fk0` FOREIGN KEY (`invoice_id`) REFERENCES `Invoice`(`invoice_id`);
 
@@ -470,7 +469,7 @@ ALTER TABLE `Order_detail` ADD CONSTRAINT `Order_detail_fk1` FOREIGN KEY (`produ
 
 ALTER TABLE `Customer` ADD CONSTRAINT `Customer_fk0` FOREIGN KEY (`role_id`) REFERENCES `Roles`(`role_id`);
 
-ALTER TABLE `Contact` ADD CONSTRAINT `Contact_fk0` FOREIGN KEY (`customer_ID`) REFERENCES `Customer`(`id`);
+ALTER TABLE `Contact` ADD CONSTRAINT `Contact_fk0` FOREIGN KEY (`customer_id`) REFERENCES `Customer`(`id`);
 
 ALTER TABLE `Transaction` ADD CONSTRAINT `Transaction_fk0` FOREIGN KEY (`unit_id`) REFERENCES `Payment_unit`(`unit_id`);
 
@@ -478,7 +477,7 @@ ALTER TABLE `Payment_unit_detail` ADD CONSTRAINT `Payment_unit_detail_fk0` FOREI
 
 ALTER TABLE `Static_payment_unit` ADD CONSTRAINT `Static_payment_unit_fk0` FOREIGN KEY (`unit_id`) REFERENCES `Payment_unit`(`unit_id`);
 
-ALTER TABLE `Static_payment_unit` ADD CONSTRAINT `Static_payment_unit_fk1` FOREIGN KEY (`transcation_id`) REFERENCES `Transaction`(`transaction_ID`);
+ALTER TABLE `Static_payment_unit` ADD CONSTRAINT `Static_payment_unit_fk1` FOREIGN KEY (`transcation_id`) REFERENCES `Transaction`(`transaction_id`);
 
 ALTER TABLE `Package_service` ADD CONSTRAINT `Package_service_fk0` FOREIGN KEY (`add_service_id`) REFERENCES `Add_package_service`(`add_service_id`);
 
