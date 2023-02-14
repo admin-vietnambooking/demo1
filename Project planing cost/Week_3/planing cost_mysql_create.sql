@@ -1,4 +1,4 @@
-CREATE TABLE `Users` (
+CREATE TABLE `users` (
 	`user_id` int(11) NOT NULL AUTO_INCREMENT,
 	`user_name` varchar(50) NOT NULL UNIQUE,
 	`password` varchar(50) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE `Users` (
 	PRIMARY KEY (`user_id`)
 );
 
-CREATE TABLE `Roles` (
+CREATE TABLE `roles` (
 	`role_id` int(11) NOT NULL AUTO_INCREMENT,
 	`role_name` varchar(50) NOT NULL UNIQUE,
 	`description` varchar(255) NOT NULL,
@@ -23,14 +23,14 @@ CREATE TABLE `Roles` (
 	PRIMARY KEY (`role_id`)
 );
 
-CREATE TABLE `Roles_to_permission` (
+CREATE TABLE `roles_to_permission` (
 	`role_id` int(11) NOT NULL,
 	`permission_id` int(11) NOT NULL,
 	`role_permission_id` int(11) NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY (`role_permission_id`)
 );
 
-CREATE TABLE `Permission` (
+CREATE TABLE `permission` (
 	`permission_id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL UNIQUE,
 	`description` varchar(255) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `Permission` (
 	PRIMARY KEY (`permission_id`)
 );
 
-CREATE TABLE `Group` (
+CREATE TABLE `group` (
 	`group_id` bit(11) NOT NULL AUTO_INCREMENT,
 	`group_name` varchar(255) NOT NULL,
 	`description` TEXT NOT NULL,
@@ -48,21 +48,21 @@ CREATE TABLE `Group` (
 	PRIMARY KEY (`group_id`)
 );
 
-CREATE TABLE `Group_position` (
+CREATE TABLE `group_position` (
 	`user_id` int(11) NOT NULL,
 	`group_id` int(11) NOT NULL,
 	`group_position_id` int(11) NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY (`group_id`,`group_position_id`)
 );
 
-CREATE TABLE `Session` (
+CREATE TABLE `session` (
 	`session_id` int(11) NOT NULL AUTO_INCREMENT,
 	`user_id` int(11) NOT NULL,
 	`created_at` TIMESTAMP NOT NULL,
 	PRIMARY KEY (`session_id`)
 );
 
-CREATE TABLE `Pages` (
+CREATE TABLE `sages` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`seo_alias` varchar(255) NOT NULL,
 	`title` varchar(255) NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `Pages` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Advertisement` (
+CREATE TABLE `advertisement` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`title` TEXT NOT NULL,
 	`position_id` varchar(255) NOT NULL,
@@ -93,13 +93,13 @@ CREATE TABLE `Advertisement` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Advertisement_position` (
+CREATE TABLE `advertisement_position` (
 	`adv_position_id` int NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	PRIMARY KEY (`adv_position`)
 );
 
-CREATE TABLE `Slides` (
+CREATE TABLE `slides` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`slide_name` varchar(255) NOT NULL,
 	`image` varchar(255) NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE `Slides` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Catalog` (
+CREATE TABLE `catalog` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`catalog_name` varchar(255) NOT NULL,
 	`meta_keyword` varchar(255) NOT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE `Catalog` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Banners` (
+CREATE TABLE `banners` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`size` int(255) NOT NULL,
@@ -133,7 +133,7 @@ CREATE TABLE `Banners` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Product` (
+CREATE TABLE `product` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`type` varchar(255) NOT NULL,
 	`description` varchar(255) NOT NULL,
@@ -159,7 +159,7 @@ CREATE TABLE `Product` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Product_category` (
+CREATE TABLE `product_category` (
 	`cate_id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`seo_title` varchar(255) NOT NULL,
@@ -175,7 +175,7 @@ CREATE TABLE `Product_category` (
 	PRIMARY KEY (`cate_id`)
 );
 
-CREATE TABLE `Product_comment` (
+CREATE TABLE `product_comment` (
 	`comment_id` int NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`email` varchar(255) NOT NULL,
@@ -187,7 +187,7 @@ CREATE TABLE `Product_comment` (
 	PRIMARY KEY (`comment_id`)
 );
 
-CREATE TABLE `Supplier` (
+CREATE TABLE `supplier` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`supplier_name` varchar(255) NOT NULL,
 	`email` varchar(255) NOT NULL,
@@ -196,7 +196,7 @@ CREATE TABLE `Supplier` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Invoice` (
+CREATE TABLE `invoice` (
 	`invoice_id` int(11) NOT NULL AUTO_INCREMENT,
 	`status` int NOT NULL,
 	`supplier_id` int(11) NOT NULL,
@@ -218,7 +218,7 @@ CREATE TABLE `invoice_detail` (
 	PRIMARY KEY (`invoice_id`,`product_id`)
 );
 
-CREATE TABLE `Orders` (
+CREATE TABLE `orders` (
 	`order_id` int(11) NOT NULL AUTO_INCREMENT,
 	`order_date` DATETIME NOT NULL,
 	`status` int NOT NULL,
@@ -227,7 +227,7 @@ CREATE TABLE `Orders` (
 	PRIMARY KEY (`order_id`)
 );
 
-CREATE TABLE `Order_detail` (
+CREATE TABLE `order_detail` (
 	`order_id` int(11) NOT NULL AUTO_INCREMENT,
 	`product_id` int(11) NOT NULL AUTO_INCREMENT,
 	`quantity` int NOT NULL DEFAULT '0',
@@ -238,7 +238,7 @@ CREATE TABLE `Order_detail` (
 	`discount` int NOT NULL
 );
 
-CREATE TABLE `Customer` (
+CREATE TABLE `customer` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`first_name` varchar(255) NOT NULL,
 	`last_name` varchar(255) NOT NULL,
@@ -253,7 +253,7 @@ CREATE TABLE `Customer` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Contact` (
+CREATE TABLE `contact` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`customer_ID` int(11) NOT NULL,
 	`note` TEXT NOT NULL,
@@ -261,7 +261,7 @@ CREATE TABLE `Contact` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Payment_unit` (
+CREATE TABLE `payment_unit` (
 	`unit_id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`description` TEXT NOT NULL,
@@ -269,7 +269,7 @@ CREATE TABLE `Payment_unit` (
 	PRIMARY KEY (`unit_id`)
 );
 
-CREATE TABLE `Transaction` (
+CREATE TABLE `transaction` (
 	`transaction_id` int(11) NOT NULL AUTO_INCREMENT,
 	`unit_id` int(11) NOT NULL,
 	`amount` int NOT NULL,
@@ -278,20 +278,20 @@ CREATE TABLE `Transaction` (
 	PRIMARY KEY (`transaction_ID`)
 );
 
-CREATE TABLE `Payment_unit_detail` (
+CREATE TABLE `payment_unit_detail` (
 	`unit_id` int(11) NOT NULL,
 	`detail_name` varchar(255) NOT NULL,
 	`detail_value` DECIMAL NOT NULL DEFAULT '0'
 );
 
-CREATE TABLE `Static_payment_unit` (
+CREATE TABLE `static_payment_unit` (
 	`unit_id` int(11) NOT NULL,
 	`transcation_id` int(11) NOT NULL,
 	`description` TEXT NOT NULL,
 	`amount` int NOT NULL
 );
 
-CREATE TABLE `Package_service` (
+CREATE TABLE `package_service` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name_service` varchar(255) NOT NULL,
 	`type` varchar NOT NULL,
@@ -305,7 +305,7 @@ CREATE TABLE `Package_service` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Add_package_service` (
+CREATE TABLE `add_package_service` (
 	`add_service_id` int(11) NOT NULL AUTO_INCREMENT,
 	`type_service` varchar(255) NOT NULL,
 	`name` varchar(255) NOT NULL,
@@ -320,13 +320,13 @@ CREATE TABLE `Add_package_service` (
 	PRIMARY KEY (`add_service_id`)
 );
 
-CREATE TABLE `Edit_package_service` (
+CREATE TABLE `edit_package_service` (
 	`service_id` int(11) NOT NULL AUTO_INCREMENT,
 	`add_service_id` int(11) NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY (`service_id`,`add_service_id`)
 );
 
-CREATE TABLE `Post_category` (
+CREATE TABLE `post_category` (
 	`cate_id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`seo_title` varchar(255) NOT NULL,
@@ -342,7 +342,7 @@ CREATE TABLE `Post_category` (
 	PRIMARY KEY (`cate_id`)
 );
 
-CREATE TABLE `Posts` (
+CREATE TABLE `posts` (
 	`post_id` int(11) NOT NULL AUTO_INCREMENT,
 	`title` varchar(255) NOT NULL,
 	`description` TEXT NOT NULL,
@@ -361,19 +361,19 @@ CREATE TABLE `Posts` (
 	PRIMARY KEY (`post_id`)
 );
 
-CREATE TABLE `Tags` (
+CREATE TABLE `tags` (
 	`tag_id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY (`tag_id`)
 );
 
-CREATE TABLE `Post_in_tags` (
+CREATE TABLE `post_in_tags` (
 	`post_id` int(11) NOT NULL AUTO_INCREMENT,
 	`tag_id` int(11) AUTO_INCREMENT,
 	PRIMARY KEY (`post_id`)
 );
 
-CREATE TABLE `Post_comment` (
+CREATE TABLE `post_comment` (
 	`comment_id` int(11) NOT NULL AUTO_INCREMENT,
 	`detail` varchar(255) NOT NULL,
 	`name` varchar(255) NOT NULL,
@@ -385,26 +385,26 @@ CREATE TABLE `Post_comment` (
 	PRIMARY KEY (`comment_id`)
 );
 
-CREATE TABLE `User_position` (
+CREATE TABLE `user_position` (
 	`user_id` int(11) NOT NULL,
 	`position_id` int(11) NOT NULL,
 	PRIMARY KEY (`user_id`,`position_id`)
 );
 
-CREATE TABLE `Positon` (
+CREATE TABLE `positon` (
 	`position_id` int(11) NOT NULL AUTO_INCREMENT,
 	`position_name` varchar(255) NOT NULL UNIQUE,
 	PRIMARY KEY (`position_id`)
 );
 
-CREATE TABLE `Orders_product` (
+CREATE TABLE `orders_product` (
 	`order_id` int NOT NULL AUTO_INCREMENT,
 	`product_id` int NOT NULL AUTO_INCREMENT,
 	`quantity` int NOT NULL,
 	PRIMARY KEY (`order_id`,`product_id`)
 );
 
-CREATE TABLE `Block` (
+CREATE TABLE `block` (
 	`block_id` int(11) NOT NULL AUTO_INCREMENT,
 	`title` varchar(255) NOT NULL,
 	`content` TEXT NOT NULL,
@@ -413,7 +413,7 @@ CREATE TABLE `Block` (
 	PRIMARY KEY (`block_id`)
 );
 
-CREATE TABLE `Page_block_map` (
+CREATE TABLE `page_block_map` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`page_id` int NOT NULL,
 	`block_id` int NOT NULL,
@@ -422,92 +422,92 @@ CREATE TABLE `Page_block_map` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `Roles_to_users` (
+CREATE TABLE `roles_to_users` (
 	`user_id` int(11) NOT NULL,
 	`role_id` int(11) NOT NULL
 );
 
-ALTER TABLE `Users` ADD CONSTRAINT `Users_fk0` FOREIGN KEY (`role_id`) REFERENCES `Roles`(`role_id`);
+ALTER TABLE `users` ADD CONSTRAINT `ssers_fk0` FOREIGN KEY (`role_id`) REFERENCES `roles`(`role_id`);
 
-ALTER TABLE `Roles` ADD CONSTRAINT `Roles_fk0` FOREIGN KEY (`group_id`) REFERENCES `Group`(`group_id`);
+ALTER TABLE `roles` ADD CONSTRAINT `roles_fk0` FOREIGN KEY (`group_id`) REFERENCES `group`(`group_id`);
 
-ALTER TABLE `Roles_to_permission` ADD CONSTRAINT `Roles_to_permission_fk0` FOREIGN KEY (`role_id`) REFERENCES `Roles`(`role_id`);
+ALTER TABLE `roles_to_permission` ADD CONSTRAINT `roles_to_permission_fk0` FOREIGN KEY (`role_id`) REFERENCES `roles`(`role_id`);
 
-ALTER TABLE `Roles_to_permission` ADD CONSTRAINT `Roles_to_permission_fk1` FOREIGN KEY (`permission_id`) REFERENCES `Permission`(`permission_id`);
+ALTER TABLE `roles_to_permission` ADD CONSTRAINT `roles_to_permission_fk1` FOREIGN KEY (`permission_id`) REFERENCES `permission`(`permission_id`);
 
-ALTER TABLE `Group_position` ADD CONSTRAINT `Group_position_fk0` FOREIGN KEY (`user_id`) REFERENCES `Users`(`user_id`);
+ALTER TABLE `group_position` ADD CONSTRAINT `group_position_fk0` FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`);
 
-ALTER TABLE `Group_position` ADD CONSTRAINT `Group_position_fk1` FOREIGN KEY (`group_id`) REFERENCES `Group`(`group_id`);
+ALTER TABLE `group_position` ADD CONSTRAINT `group_position_fk1` FOREIGN KEY (`group_id`) REFERENCES `group`(`group_id`);
 
-ALTER TABLE `Session` ADD CONSTRAINT `Session_fk0` FOREIGN KEY (`user_id`) REFERENCES `Users`(`user_id`);
+ALTER TABLE `session` ADD CONSTRAINT `session_fk0` FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`);
 
-ALTER TABLE `Advertisement` ADD CONSTRAINT `Advertisement_fk0` FOREIGN KEY (`position_id`) REFERENCES `Advertisement_position`(`adv_position`);
+ALTER TABLE `advertisement` ADD CONSTRAINT `advertisement_fk0` FOREIGN KEY (`position_id`) REFERENCES `advertisement_position`(`adv_position`);
 
-ALTER TABLE `Advertisement` ADD CONSTRAINT `Advertisement_fk1` FOREIGN KEY (`page_id`) REFERENCES `Pages`(`id`);
+ALTER TABLE `advertisement` ADD CONSTRAINT `advertisement_fk1` FOREIGN KEY (`page_id`) REFERENCES `pages`(`id`);
 
-ALTER TABLE `Slides` ADD CONSTRAINT `Slides_fk0` FOREIGN KEY (`sort_order_id`) REFERENCES `Catalog`(`sort_order`);
+ALTER TABLE `slides` ADD CONSTRAINT `slides_fk0` FOREIGN KEY (`sort_order_id`) REFERENCES `catalog`(`sort_order`);
 
-ALTER TABLE `Slides` ADD CONSTRAINT `Slides_fk1` FOREIGN KEY (`page_id`) REFERENCES `Pages`(`id`);
+ALTER TABLE `slides` ADD CONSTRAINT `slides_fk1` FOREIGN KEY (`page_id`) REFERENCES `pages`(`id`);
 
-ALTER TABLE `Banners` ADD CONSTRAINT `Banners_fk0` FOREIGN KEY (`page_id`) REFERENCES `Pages`(`id`);
+ALTER TABLE `banners` ADD CONSTRAINT `banners_fk0` FOREIGN KEY (`page_id`) REFERENCES `pages`(`id`);
 
-ALTER TABLE `Product` ADD CONSTRAINT `Product_fk0` FOREIGN KEY (`cate_id`) REFERENCES `Product_category`(`cate_id`);
+ALTER TABLE `product` ADD CONSTRAINT `product_fk0` FOREIGN KEY (`cate_id`) REFERENCES `product_category`(`cate_id`);
 
-ALTER TABLE `Product_comment` ADD CONSTRAINT `Product_comment_fk0` FOREIGN KEY (`product_id`) REFERENCES `Product`(`id`);
+ALTER TABLE `product_comment` ADD CONSTRAINT `product_comment_fk0` FOREIGN KEY (`product_id`) REFERENCES `product`(`id`);
 
-ALTER TABLE `Invoice` ADD CONSTRAINT `Invoice_fk0` FOREIGN KEY (`supplier_id`) REFERENCES `Supplier`(`id`);
+ALTER TABLE `invoice` ADD CONSTRAINT `invoice_fk0` FOREIGN KEY (`supplier_id`) REFERENCES `supplier`(`id`);
 
-ALTER TABLE `invoice_detail` ADD CONSTRAINT `invoice_detail_fk0` FOREIGN KEY (`invoice_id`) REFERENCES `Invoice`(`invoice_id`);
+ALTER TABLE `invoice_detail` ADD CONSTRAINT `invoice_detail_fk0` FOREIGN KEY (`invoice_id`) REFERENCES `invoice`(`invoice_id`);
 
-ALTER TABLE `invoice_detail` ADD CONSTRAINT `invoice_detail_fk1` FOREIGN KEY (`product_id`) REFERENCES `Product`(`id`);
+ALTER TABLE `invoice_detail` ADD CONSTRAINT `invoice_detail_fk1` FOREIGN KEY (`product_id`) REFERENCES `product`(`id`);
 
-ALTER TABLE `Orders` ADD CONSTRAINT `Orders_fk0` FOREIGN KEY (`customer_id`) REFERENCES `Customer`(`id`);
+ALTER TABLE `orders` ADD CONSTRAINT `orders_fk0` FOREIGN KEY (`customer_id`) REFERENCES `customer`(`id`);
 
-ALTER TABLE `Order_detail` ADD CONSTRAINT `Order_detail_fk0` FOREIGN KEY (`order_id`) REFERENCES `Orders`(`order_id`);
+ALTER TABLE `order_detail` ADD CONSTRAINT `order_detail_fk0` FOREIGN KEY (`order_id`) REFERENCES `Orders`(`order_id`);
 
-ALTER TABLE `Order_detail` ADD CONSTRAINT `Order_detail_fk1` FOREIGN KEY (`product_id`) REFERENCES `Product`(`id`);
+ALTER TABLE `order_detail` ADD CONSTRAINT `order_detail_fk1` FOREIGN KEY (`product_id`) REFERENCES `product`(`id`);
 
-ALTER TABLE `Customer` ADD CONSTRAINT `Customer_fk0` FOREIGN KEY (`role_id`) REFERENCES `Roles`(`role_id`);
+ALTER TABLE `customer` ADD CONSTRAINT `customer_fk0` FOREIGN KEY (`role_id`) REFERENCES `roles`(`role_id`);
 
-ALTER TABLE `Contact` ADD CONSTRAINT `Contact_fk0` FOREIGN KEY (`customer_id`) REFERENCES `Customer`(`id`);
+ALTER TABLE `contact` ADD CONSTRAINT `contact_fk0` FOREIGN KEY (`customer_id`) REFERENCES `customer`(`id`);
 
-ALTER TABLE `Transaction` ADD CONSTRAINT `Transaction_fk0` FOREIGN KEY (`unit_id`) REFERENCES `Payment_unit`(`unit_id`);
+ALTER TABLE `transaction` ADD CONSTRAINT `transaction_fk0` FOREIGN KEY (`unit_id`) REFERENCES `payment_unit`(`unit_id`);
 
-ALTER TABLE `Payment_unit_detail` ADD CONSTRAINT `Payment_unit_detail_fk0` FOREIGN KEY (`unit_id`) REFERENCES `Payment_unit`(`unit_id`);
+ALTER TABLE `payment_unit_detail` ADD CONSTRAINT `payment_unit_detail_fk0` FOREIGN KEY (`unit_id`) REFERENCES `payment_unit`(`unit_id`);
 
-ALTER TABLE `Static_payment_unit` ADD CONSTRAINT `Static_payment_unit_fk0` FOREIGN KEY (`unit_id`) REFERENCES `Payment_unit`(`unit_id`);
+ALTER TABLE `static_payment_unit` ADD CONSTRAINT `static_payment_unit_fk0` FOREIGN KEY (`unit_id`) REFERENCES `payment_unit`(`unit_id`);
 
-ALTER TABLE `Static_payment_unit` ADD CONSTRAINT `Static_payment_unit_fk1` FOREIGN KEY (`transcation_id`) REFERENCES `Transaction`(`transaction_id`);
+ALTER TABLE `static_payment_unit` ADD CONSTRAINT `static_payment_unit_fk1` FOREIGN KEY (`transcation_id`) REFERENCES `transaction`(`transaction_id`);
 
-ALTER TABLE `Package_service` ADD CONSTRAINT `Package_service_fk0` FOREIGN KEY (`add_service_id`) REFERENCES `Add_package_service`(`add_service_id`);
+ALTER TABLE `package_service` ADD CONSTRAINT `package_service_fk0` FOREIGN KEY (`add_service_id`) REFERENCES `add_package_service`(`add_service_id`);
 
-ALTER TABLE `Edit_package_service` ADD CONSTRAINT `Edit_package_service_fk0` FOREIGN KEY (`service_id`) REFERENCES `Package_service`(`id`);
+ALTER TABLE `edit_package_service` ADD CONSTRAINT `edit_package_service_fk0` FOREIGN KEY (`service_id`) REFERENCES `package_service`(`id`);
 
-ALTER TABLE `Edit_package_service` ADD CONSTRAINT `Edit_package_service_fk1` FOREIGN KEY (`add_service_id`) REFERENCES `Add_package_service`(`add_service_id`);
+ALTER TABLE `edit_package_service` ADD CONSTRAINT `edit_package_service_fk1` FOREIGN KEY (`add_service_id`) REFERENCES `add_package_service`(`add_service_id`);
 
-ALTER TABLE `Posts` ADD CONSTRAINT `Posts_fk0` FOREIGN KEY (`cate_id`) REFERENCES `Post_category`(`cate_id`);
+ALTER TABLE `posts` ADD CONSTRAINT `posts_fk0` FOREIGN KEY (`cate_id`) REFERENCES `post_category`(`cate_id`);
 
-ALTER TABLE `Post_in_tags` ADD CONSTRAINT `Post_in_tags_fk0` FOREIGN KEY (`post_id`) REFERENCES `Posts`(`post_id`);
+ALTER TABLE `post_in_tags` ADD CONSTRAINT `post_in_tags_fk0` FOREIGN KEY (`post_id`) REFERENCES `posts`(`post_id`);
 
-ALTER TABLE `Post_in_tags` ADD CONSTRAINT `Post_in_tags_fk1` FOREIGN KEY (`tag_id`) REFERENCES `Tags`(`tag_id`);
+ALTER TABLE `post_in_tags` ADD CONSTRAINT `post_in_tags_fk1` FOREIGN KEY (`tag_id`) REFERENCES `tags`(`tag_id`);
 
-ALTER TABLE `Post_comment` ADD CONSTRAINT `Post_comment_fk0` FOREIGN KEY (`post_id`) REFERENCES `Posts`(`post_id`);
+ALTER TABLE `post_comment` ADD CONSTRAINT `post_comment_fk0` FOREIGN KEY (`post_id`) REFERENCES `posts`(`post_id`);
 
-ALTER TABLE `User_position` ADD CONSTRAINT `User_position_fk0` FOREIGN KEY (`user_id`) REFERENCES `Users`(`user_id`);
+ALTER TABLE `user_position` ADD CONSTRAINT `user_position_fk0` FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`);
 
-ALTER TABLE `User_position` ADD CONSTRAINT `User_position_fk1` FOREIGN KEY (`position_id`) REFERENCES `Positon`(`position_id`);
+ALTER TABLE `user_position` ADD CONSTRAINT `user_position_fk1` FOREIGN KEY (`position_id`) REFERENCES `positon`(`position_id`);
 
-ALTER TABLE `Orders_product` ADD CONSTRAINT `Orders_product_fk0` FOREIGN KEY (`order_id`) REFERENCES `Orders`(`order_id`);
+ALTER TABLE `orders_product` ADD CONSTRAINT `orders_product_fk0` FOREIGN KEY (`order_id`) REFERENCES `orders`(`order_id`);
 
-ALTER TABLE `Orders_product` ADD CONSTRAINT `Orders_product_fk1` FOREIGN KEY (`product_id`) REFERENCES `Product`(`id`);
+ALTER TABLE `orders_product` ADD CONSTRAINT `orders_product_fk1` FOREIGN KEY (`product_id`) REFERENCES `product`(`id`);
 
-ALTER TABLE `Page_block_map` ADD CONSTRAINT `Page_block_map_fk0` FOREIGN KEY (`page_id`) REFERENCES `Pages`(`id`);
+ALTER TABLE `page_block_map` ADD CONSTRAINT `page_block_map_fk0` FOREIGN KEY (`page_id`) REFERENCES `pages`(`id`);
 
-ALTER TABLE `Page_block_map` ADD CONSTRAINT `Page_block_map_fk1` FOREIGN KEY (`block_id`) REFERENCES `Block`(`block_id`);
+ALTER TABLE `page_block_map` ADD CONSTRAINT `page_block_map_fk1` FOREIGN KEY (`block_id`) REFERENCES `block`(`block_id`);
 
-ALTER TABLE `Roles_to_users` ADD CONSTRAINT `Roles_to_users_fk0` FOREIGN KEY (`user_id`) REFERENCES `Users`(`user_id`);
+ALTER TABLE `roles_to_users` ADD CONSTRAINT `roles_to_users_fk0` FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`);
 
-ALTER TABLE `Roles_to_users` ADD CONSTRAINT `Roles_to_users_fk1` FOREIGN KEY (`role_id`) REFERENCES `Roles`(`role_id`);
+ALTER TABLE `roles_to_users` ADD CONSTRAINT `roles_to_users_fk1` FOREIGN KEY (`role_id`) REFERENCES `roles`(`role_id`);
 
 
 
